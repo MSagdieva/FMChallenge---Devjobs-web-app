@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'KumbhSans-Bold';
+    src: url('../fonts/KumbhSans-Bold.ttf') format('truetype');
+    /* Add additional src lines for other file formats */
+  }
+
+  @font-face {
+    font-family: 'KumbhSans-Regular';
+    src: url('../fonts/KumbhSans-Regular.ttf') format('truetype');
+    /* Add additional src lines for other file formats */
+  }
+  $primaryColor: #5964E0;
+
+  
+  body {
+    font-family: 'KumbhSans-Bold', sans-serif;
+  }
+
+  .jobs-list-container .container .card:nth-child(n+13){
+    display: none;
+  }
+
+  .jobs-list-container .container.expanded .card:nth-child(n+13){
+    display: initial;
+  }

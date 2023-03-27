@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import Main from "./main";
 
 function index() {
-  return <div>
-    <Main/>
-  </div>;
+  return(
+  <div>
+  <Main/>
+</div>)
 }
 
 export default index;

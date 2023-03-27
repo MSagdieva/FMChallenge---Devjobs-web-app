@@ -1,50 +1,41 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import Card1 from "../components/Card";
 import Container from "@mui/material/Container";
 import Header from "../components/elements/Header";
-
-
-export default function Main() {
-    return <div>
-
-        <p>I AM MAin PAGE!</p>
-        <Blog />
-        
-    </div>
+import Button from "@mui/material/Button";
+import {ColorModeContext} from "./_app";
+import { useTheme } from '@mui/material/styles';
+import JobsList from "../components/JobsList";
+  
+export async function getInfo() {
+    const res = await fetch('/data.json')
+    const jobs = await res.json()
+    return jobs;
   }
-
   function setData(data){
-  const list = [];
-   data.map((post)=>{
-        list.push(
-            <Card1 info={post}/>);
-        })
-    return list;
-  }
-
-  function Blog() {
-    const [posts, setPosts] = useState([]);
+    const list = [];
+     data.map((job)=>{
+          list.push(
+              <Card1 info={job} key={job.id}/>);
+          })
+      return list;
+    }
+export default function Main() {
+    const theme = useTheme();
+    const colorMode = useContext(ColorModeContext);
+    const [jobs, setJobs] = useState([]);
     const [searchData, setSearchData] = useState(null);
     useEffect(()=>{
         getInfo().then((result)=>{
-        setPosts(result);
+        setJobs(result);
         })},[])
     useEffect(()=>{
-        setSearchData(setData(posts)
+        setSearchData(setData(jobs)
         );
-            }, [posts])
-    
+            }, [jobs])
 
-    return (
-          <div className="container"
-                style={{display:"grid", gridTemplateColumns: "1fr 1fr 1fr"}}>
-                {searchData}</div>
-      )
-  }
-  
-  export async function getInfo() {
-    const res = await fetch('/data.json')
-    const posts = await res.json()
-  
-    return posts;
+    return (<div>
+        <Header />
+        <JobsList>{searchData}</JobsList>
+    </div>)
   }
