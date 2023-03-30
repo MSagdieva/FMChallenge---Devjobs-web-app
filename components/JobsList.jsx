@@ -10,12 +10,12 @@ export default function JobsList(props) {
     }
 
     return (
-          <div className="jobs-list-container">
-            <div className={`container ${expanded}`}
-                    style={{display:"grid", gridTemplateColumns: "1fr 1fr 1fr", gridRowGap: 20 }}>
+          <Container className="jobs-list-container">
+            <Container className={`jobs-container ${expanded}`}
+                    style={{display:"grid", gridTemplateColumns: "1fr 1fr 1fr", gridRowGap: 20, margin: "0 auto" }}>
                     {props.children}
-            </div>
-            <Button style={{backgroundColor:"#5964E0"}} onClick={changeExpanded}>{!expanded? "Load More":"Hide"}</Button>
-          </div>
+            </Container>
+            <Button onClick={changeExpanded}>{!expanded? "Load More":"Hide"}</Button>
+          </Container>
       )
   }

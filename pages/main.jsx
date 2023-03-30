@@ -34,8 +34,8 @@ export default function Main() {
         );
             }, [jobs])
 
-    return (<div>
+    return (<Container maxWidth="false" variant="body2" disableGutters={true}>
         <Header />
         <JobsList>{searchData}</JobsList>
-    </div>)
+    </Container>)
   }

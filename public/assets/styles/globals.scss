@@ -11,15 +11,24 @@
   }
   $primaryColor: #5964E0;
 
-  
+  *{
+    box-sizing: border-box;
+  }
   body {
     font-family: 'KumbhSans-Bold', sans-serif;
+    padding: 0;
+    margin: 0;
   }
 
-  .jobs-list-container .container .card:nth-child(n+13){
+  .jobs-list-container .jobs-container .card{
+    margin-top: 50px;
+    position:relative;
+  }
+
+  .jobs-list-container .jobs-container .card:nth-child(n+13){
     display: none;
   }
 
-  .jobs-list-container .container.expanded .card:nth-child(n+13){
+  .jobs-list-container .jobs-container.expanded .card:nth-child(n+13){
     display: initial;
   }

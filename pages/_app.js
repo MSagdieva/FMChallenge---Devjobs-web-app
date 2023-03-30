@@ -1,21 +1,54 @@
 import React, {useState, useMemo, createContext}  from "react";
 import '../public/assets/styles/globals.scss';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { amber, grey } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
   const getDesignTokens = (mode) => ({
     typography: {
-      fontFamily: `"KumbhSans-Regular", Arial`,
+      fontFamily: `"KumbhSans-Regular", Arial`
+    },
+    components: {
+      MuiContainer: {
+        styleOverrides: {
+          root: {
+          padding: 0,
+          margin: 0,
+          backgroundColor: mode === "light"? "#FFF": "#000",}}
+      },
+      MuiTypography: {
+        styleOverrides: {
+          root: {
+          padding: 0}}
+      },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+          backgroundColor:"#5964E0",
+          color: "#FFF"}
+        },
+      },
+      MuiAvatar: {
+        styleOverrides: {
+          root:{
+            position: "relative",
+            top: -40,
+            zIndex:2,
+            borderRadius: 20},
+          img: {
+            objectFit: "contain",
+            height: "initial",
+          }}
+      },
     },
     palette: {
       mode,
       ...(mode === 'light'
         ? {
             primary:
-            {main:"#F2F2F2"},
-            divider: amber[200],
+            {main:"#5964E0"},
+            divider: "#5964E0",
             background: {
               default: "#FFF",
               paper:  "#FFF",
@@ -27,9 +60,9 @@ export const ColorModeContext = createContext({ toggleColorMode: () => {} });
           }
         : {
             primary: 
-            {main: "#FFF000"
+            {main: "#5964E0",
           },
-            divider: "#FFF000",
+            divider: "5964E0",
             background: {
               default: grey[900],
               paper: grey[900],
@@ -51,7 +84,7 @@ const colorMode = useMemo(
         setMode((prevMode) =>
           prevMode === 'light' ? 'dark' : 'light',
         );
-      },
+      }
     }),
     [],
   );

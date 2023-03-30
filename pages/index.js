@@ -1,11 +1,12 @@
-import React, {useContext} from "react";
+import React from "react";
 import Main from "./main";
+import { Container } from "@mui/system";
 
 function index() {
   return(
-  <div>
-  <Main/>
-</div>)
+  <Container maxWidth="false" disableGutters={true}>
+    <Main/>
+</Container>)
 }
 
 export default index;

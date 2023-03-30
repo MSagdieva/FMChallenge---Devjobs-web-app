@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 import {useRouter} from 'next/router';
 import Header from '../../components/elements/Header'
+import { Container, Typography } from "@mui/material";
 
 export async function getInfo() {
     const res = await fetch('/data.json')
@@ -10,7 +11,6 @@ export async function getInfo() {
   function setData(data, id){
      let filterData=[];
      data.map((dataObj)=>{if (dataObj.id==id){filterData.push(dataObj)}});
-     console.log(filterData);
      return filterData;
     }
 
@@ -34,8 +34,15 @@ export default function Detail() {
                 console.log(pageData)
                     }, [downloaded])
     return (<div>
-        {downloaded?(<div><Header /><h3>i am detail page number {id2}!</h3>
-        <p>{pageData[0]!=undefined?pageData[0].company:''}</p></div>):
+        {downloaded?(
+        <Container maxWidth="false">
+            <Container>
+            <Header />
+            <Typography variant="h3">{pageData[0]!=undefined?pageData[0].company:''}</Typography>
+            <Typography variant="body1">{pageData[0]!=undefined?pageData[0].description:''}</Typography>
+            <Typography variant="body1">{pageData[0]!=undefined?pageData[0].company:''}</Typography>
+            </Container>
+            </Container>):
         ''}
     </div>)
   }
