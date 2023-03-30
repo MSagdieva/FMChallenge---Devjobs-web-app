@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from "react";
 import {useRouter} from 'next/router';
 import Header from '../../components/elements/Header'
 import { Container, Typography } from "@mui/material";
+import { Paper } from "@mui/material";
 
 export async function getInfo() {
     const res = await fetch('/data.json')
@@ -35,12 +36,14 @@ export default function Detail() {
                     }, [downloaded])
     return (<div>
         {downloaded?(
-        <Container maxWidth="false">
-            <Container>
+        <Container maxWidth="false" disableGutters={true}>
             <Header />
-            <Typography variant="h3">{pageData[0]!=undefined?pageData[0].company:''}</Typography>
-            <Typography variant="body1">{pageData[0]!=undefined?pageData[0].description:''}</Typography>
-            <Typography variant="body1">{pageData[0]!=undefined?pageData[0].company:''}</Typography>
+            <Container disableGutters={true}>
+                <Paper>
+                    <Typography variant="h3">{pageData[0]!=undefined?pageData[0].company:''}</Typography>
+                    <Typography variant="body1">{pageData[0]!=undefined?pageData[0].description:''}</Typography>
+                    <Typography variant="body1">{pageData[0]!=undefined?pageData[0].company:''}</Typography>
+                </Paper>
             </Container>
             </Container>):
         ''}

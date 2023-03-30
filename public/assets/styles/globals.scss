@@ -19,10 +19,18 @@
     padding: 0;
     margin: 0;
   }
+  .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    height: 100%;
+  }
 
   .jobs-list-container .jobs-container .card{
     margin-top: 50px;
     position:relative;
+    overflow: initial;
   }
 
   .jobs-list-container .jobs-container .card:nth-child(n+13){

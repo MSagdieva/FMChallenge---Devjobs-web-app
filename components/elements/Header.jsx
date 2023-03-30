@@ -12,9 +12,13 @@ export default function Header(props) {
   const colorMode = useContext(ColorModeContext);
   const [checked, setChecked] = useState(false);
   const CustomizedHeader = styled(Container)`
-      background: no-repeat url("./assets/desktop/bg-pattern-header.svg") 100% 100%;
+      background: url("./assets/desktop/bg-pattern-header.svg") no-repeat 0% 0%;
+      background-size: 100% 100%;
+      height: 165px;
+      padding: 0!important;
+      margin: 0 auto;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       `;
   const handleChange = function(e){
     colorMode.toggleColorMode();
@@ -23,9 +27,10 @@ export default function Header(props) {
 
       return (
       <CustomizedHeader maxWidth="false">
+              <Container className="header">
               <Typography variant="h6">{"devJobs"}</Typography>
               <Switch checked={checked} onChange ={handleChange}/>
-              <Button onClick={()=>{colorMode.toggleColorMode()}}>Change</Button>
+              </Container>
         </CustomizedHeader>
       )
   }

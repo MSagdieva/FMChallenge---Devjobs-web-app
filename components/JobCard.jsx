@@ -9,12 +9,8 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 
-export default function Card1(info) {
-        const [expanded, setExpanded] = React.useState(false);
+export default function JobCard(info) {
         const logoAddress = info.info.logo.slice(1);
-        const handleExpandClick = () => {
-          setExpanded(!expanded);
-        };
       
     return (<Link href={`/detail/${encodeURIComponent(info.info.id)}`}>
       <Card className={"card"} sx={{ maxWidth: 345 }}>
@@ -22,10 +18,6 @@ export default function Card1(info) {
       avatar={
         <Avatar variant="square" style={{backgroundColor: info.info.logoBackground}} src={logoAddress}>
         </Avatar>
-      }
-      action={
-        <IconButton aria-label="settings">
-        </IconButton>
       }
       title={info.info.company}
       subheader={info.info.position}
@@ -35,28 +27,6 @@ export default function Card1(info) {
         {info.info.postedAt}
       </Typography>
     </CardContent>
-    <CardActions disableSpacing>
-      <IconButton aria-label="add to favorites">
-        
-      </IconButton>
-      <IconButton aria-label="share">
-        
-      </IconButton>
-
-    </CardActions>
-    <Collapse in={expanded} timeout="auto" unmountOnExit>
-      <CardContent>
-        <Typography paragraph></Typography>
-        <Typography paragraph>
-        </Typography>
-        <Typography paragraph>
-        </Typography>
-        <Typography paragraph>
-        </Typography>
-        <Typography>
-        </Typography>
-      </CardContent>
-    </Collapse>
   </Card>
   </Link>);
   }

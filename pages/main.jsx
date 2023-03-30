@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
-import Card1 from "../components/Card";
+import JobCard from "../components/JobCard";
 import Container from "@mui/material/Container";
 import Header from "../components/elements/Header";
 import Button from "@mui/material/Button";
@@ -16,7 +16,7 @@ export async function getInfo() {
     const list = [];
      data.map((job)=>{
           list.push(
-              <Card1 info={job} key={job.id}/>);
+              <JobCard info={job} key={job.id}/>);
           })
       return list;
     }

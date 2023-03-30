@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
-import Card1 from "../components/Card";
+import Card1 from "./JobCard";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 
@@ -10,7 +10,7 @@ export default function JobsList(props) {
     }
 
     return (
-          <Container className="jobs-list-container">
+          <Container className="jobs-list-container" style={{margin: "0 auto"}}>
             <Container className={`jobs-container ${expanded}`}
                     style={{display:"grid", gridTemplateColumns: "1fr 1fr 1fr", gridRowGap: 20, margin: "0 auto" }}>
                     {props.children}
