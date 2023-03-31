@@ -31,21 +31,17 @@ export default function Detail() {
         setPageData(setData(pageData, id2));
         setDownloaded(true);
             }, [id])
-            useEffect(()=>{
-                console.log(pageData)
-                    }, [downloaded])
     return (<div>
-        {downloaded?(
+        
         <Container maxWidth="false" disableGutters={true}>
-            <Header />
-            <Container disableGutters={true}>
-                <Paper>
+            <Header page="inner"/>
+            <Container disableGutters={true} style={{display: "flex", justifyContent: "center", margin: "0 auto"}}>
+               {downloaded?( <Paper>
                     <Typography variant="h3">{pageData[0]!=undefined?pageData[0].company:''}</Typography>
                     <Typography variant="body1">{pageData[0]!=undefined?pageData[0].description:''}</Typography>
                     <Typography variant="body1">{pageData[0]!=undefined?pageData[0].company:''}</Typography>
-                </Paper>
+                    </Paper>):''}
             </Container>
-            </Container>):
-        ''}
+            </Container>
     </div>)
   }

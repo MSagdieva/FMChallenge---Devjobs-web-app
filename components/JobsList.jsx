@@ -10,7 +10,7 @@ export default function JobsList(props) {
     }
 
     return (
-          <Container className="jobs-list-container" style={{margin: "0 auto"}}>
+          <Container className="jobs-list-container" style={{margin: "0 auto", textAlign: "center"}}>
             <Container className={`jobs-container ${expanded}`}
                     style={{display:"grid", gridTemplateColumns: "1fr 1fr 1fr", gridRowGap: 20, margin: "0 auto" }}>
                     {props.children}
