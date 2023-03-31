@@ -1,12 +1,33 @@
-import React from "react";
-import Main from "./main";
-import { Container } from "@mui/system";
+import React, {createContext} from "react";
+import JobCard from "../components/JobCard";
+import { Container, Typography } from "@mui/material";
+import Header from "../components/elements/Header";
+import Button from "@mui/material/Button";
+import { useTheme } from '@mui/material/styles';
+import JobsList from "../components/JobsList"; 
+import Main from  "../components/Main"
 
-function index() {
-  return(
-  <Container maxWidth="false" disableGutters={true}>
-    <Main/>
-</Container>)
+const dev = process.env.NODE_ENV !== 'production';
+export const server = dev ? 'http://localhost:3000' : '';
+
+export async function getStaticProps(){
+  const res = await fetch( `${server}/data.json`);
+  const allJobsData = await res.json();
+  return {
+    props: {
+      allJobsData,
+    },
+  };
+}
+export const DataContext = createContext();
+
+function index({allJobsData}) {
+  return(<Container maxWidth="false" disableGutters={true}>
+   <DataContext.Provider value={allJobsData}>
+    <Main />
+    </DataContext.Provider>
+</Container>
+)
 }
 
 export default index;

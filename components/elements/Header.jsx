@@ -4,11 +4,9 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import { Container } from "@mui/material";
 import Switch from "@mui/material/Switch";
-import SvgIcon from '@mui/material/SvgIcon';
 import Image from 'next/image';
 
-
-export default function Header(props) {
+const Header = (props) => {
   const colorMode = useContext(ColorModeContext);
   const [checked, setChecked] = useState(false);
   const CustomImage = styled(Image)
@@ -124,3 +122,5 @@ export default function Header(props) {
         </CustomizedHeader>
       )
   }
+
+  export default Header

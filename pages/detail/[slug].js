@@ -3,44 +3,43 @@ import {useRouter} from 'next/router';
 import Header from '../../components/elements/Header'
 import { Container, Typography } from "@mui/material";
 import { Paper } from "@mui/material";
+const dev = process.env.NODE_ENV !== 'production';
+export const server = dev ? 'http://localhost:3000' : '';
 
-export async function getInfo() {
-    const res = await fetch('/data.json')
-    const info = await res.json()
-    return info;
-  }
-  function setData(data, id){
-     let filterData=[];
-     data.map((dataObj)=>{if (dataObj.id==id){filterData.push(dataObj)}});
-     return filterData;
+export async function getStaticProps(){
+  const res = await fetch( `${server}/data.json`);
+  const allJobsData = await res.json();
+  return {
+    props: {
+      allJobsData,
+    },
+  };
+}
+
+export async function getStaticPaths() {
+    const res = await fetch( `${server}/data.json`);
+    const allJobs = await res.json();
+    let i=0;
+    const paths = allJobs.map((job)=>{i++;return{params: {slug: `${i}` },};});
+    return {
+      paths,
+      fallback: false, // can also be true or 'blocking'
     }
+  }
+  
 
-export default function Detail() {
+export default function Detail({allJobsData}) {
     const router = useRouter();
-    const id2 = router.query.slug;
-    const [downloaded, setDownloaded] = useState(false);
-    const [pageData, setPageData] = useState([]);
-    const [id, setId] = useState([]);
-    useEffect(()=>{
-        getInfo().then((result)=>{
-            {setPageData(result);}
-        }).then(()=>{
-           setId(id2);
-        })},[])
-    useEffect(()=>{
-        setPageData(setData(pageData, id2));
-        setDownloaded(true);
-            }, [id])
+    const { slug } = router.query;
     return (<div>
-        
         <Container maxWidth="false" disableGutters={true}>
             <Header page="inner"/>
             <Container disableGutters={true} style={{display: "flex", justifyContent: "center", margin: "0 auto"}}>
-               {downloaded?( <Paper>
-                    <Typography variant="h3">{pageData[0]!=undefined?pageData[0].company:''}</Typography>
-                    <Typography variant="body1">{pageData[0]!=undefined?pageData[0].description:''}</Typography>
-                    <Typography variant="body1">{pageData[0]!=undefined?pageData[0].company:''}</Typography>
-                    </Paper>):''}
+                <Paper>
+                    <Typography variant="h3">{allJobsData[slug-1].company}</Typography>
+                    <Typography variant="body1">{allJobsData[slug-1].description}</Typography>
+                    <Typography variant="body1">{allJobsData[slug-1].company}</Typography>
+                </Paper>
             </Container>
             </Container>
     </div>)

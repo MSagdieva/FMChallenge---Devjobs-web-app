@@ -1,11 +1,10 @@
-import Form from 'react-bootstrap/Form';
-import dark_search_logo from "../../images/logos/dark_search_logo.svg";
-import light_search_logo from "../../images/logos/light_search_logo.svg";
-import lightStyles from '../../assets/lightThemeStylesheet.module.css';
-import darkStyles from '../../assets/darkThemeStylesheet.module.css';
-import { getCardRowsData } from '../../pages/MainPage'
-import { ThemeContext } from "../../App";
-import { useContext } from "react";
+import React, { useContext } from "react";
+import Input from '@mui/material/Input';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import InputLabel from '@mui/material/InputLabel';
+import Image from 'next/image';
 
 export default function SearchLine( props) {
 
@@ -28,20 +27,23 @@ export default function SearchLine( props) {
         });
         props.setSearchData(getCardRowsData(filterCountriesArray));
   }
-    const placeholderText = "Search for the country...";
-    const {theme} = useContext(ThemeContext);
-    return (
-      <Form style={{width: "50%"}}>
-        <Form.Group className={(lightStyles.search_line_container) + " mb-1"} controlId="searchForm.ControlInput1">
-            <img
-              alt=""
-              src={theme==="dark" ? dark_search_logo : light_search_logo}
-              width="30"
-              height="30"
-              className={(lightStyles.search_image) + " d-inline-block align-top"}
-            />{' '}
-          <Form.Control className={(theme==="dark" ? darkStyles.dark_search_line: lightStyles.light_search_line)+" " + (lightStyles.search_line)} type="text" placeholder={placeholderText} onChange={searchChangeHandle}/>
-        </Form.Group>
-      </Form>
-    );
+   
+  return (<FormControl variant="standard">
+            <InputLabel htmlFor="input-with-icon-adornment">
+            Filter by title, companies, expertise…
+            </InputLabel>
+            <Input
+              id="input-with-icon-adornment"
+              startAdornment={
+                <InputAdornment position="start">
+                  <Image
+                priority
+                height={12}
+                width={12}
+                src="/assets/desktop/icon-search.svg"
+                />
+                </InputAdornment>
+              }
+            />
+          </FormControl>)
   }
