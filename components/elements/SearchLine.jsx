@@ -27,12 +27,18 @@ export default function SearchLine( props) {
         });
         props.setSearchData(getCardRowsData(filterCountriesArray));
   }
+  function handleChange(e){
+    console.log(e.target.value)
+    props.data.map((job) => {
+      console.log(job.id);
+    });
+  }
    
   return (<FormControl variant="standard">
             <InputLabel htmlFor="input-with-icon-adornment">
-            Filter by title, companies, expertise…
+            {props.label}
             </InputLabel>
-            <Input
+            <Input onChange={handleChange}
               id="input-with-icon-adornment"
               startAdornment={
                 <InputAdornment position="start">
@@ -40,7 +46,7 @@ export default function SearchLine( props) {
                 priority
                 height={12}
                 width={12}
-                src="/assets/desktop/icon-search.svg"
+                src={props.pic}
                 />
                 </InputAdornment>
               }
