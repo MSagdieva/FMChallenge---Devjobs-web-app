@@ -16,7 +16,7 @@ export default function Main() {
     const [filterData, setFilterData] = useState(useContext(DataContext));
     
     useEffect (()=>
-    { console.log(searchQuery);
+    {
       setFilterData(data.filter((job)=>{return searchQuery.indexOf(job.id)!="-1"}))
     },[searchQuery])
 

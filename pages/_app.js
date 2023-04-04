@@ -40,8 +40,13 @@ export const ColorModeContext = createContext({ toggleColorMode: () => {} });
             objectFit: "contain",
             height: "initial",
           }}
-      },
-    },
+        },
+      MuiFormControlLabel: {
+      styleOverrides: {
+        root: {
+        color: mode === "light"? "#000": "#FFF",}
+      }
+    }},
     palette: {
       mode,
       ...(mode === 'light'
@@ -93,7 +98,7 @@ const colorMode = useMemo(
 
     return (<ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
-    <Component {...pageProps} />
+    <Component {...pageProps} style={{backgroundColor: mode === "light"? "#FFF": "#000"}}/>
     </ThemeProvider>
     </ColorModeContext.Provider>)
   }

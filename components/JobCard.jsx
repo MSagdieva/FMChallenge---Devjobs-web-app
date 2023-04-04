@@ -21,13 +21,13 @@ export default function JobCard(info) {
             <Avatar variant="square" style={{backgroundColor: info.info.logoBackground}} src={logoAddress}>
             </Avatar>
           }
-          title={info.info.company}
-          subheader={info.info.position}
         />
         <CardContent>
-          <Typography variant="body2">
-            {info.info.postedAt}
-          </Typography>
+        <Typography variant="body2">
+            {info.info.postedAt} {"\u25CF"} {info.info.contract}
+          </Typography><Typography variant="h8">{info.info.position}</Typography>
+        <Typography variant="body2">{info.info.company}</Typography>
+        <Typography variant="body2">{info.info.location}</Typography>
         </CardContent>
       </CustomizedCard>
   </Link>);

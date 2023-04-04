@@ -10,7 +10,12 @@
     /* Add additional src lines for other file formats */
   }
   $primaryColor: #5964E0;
-
+  .css-llkcrc-MuiContainer-root{
+    min-height: 100vh;
+  }
+  .css-llkcrc-MuiContainer-root{
+    border-radius: 15px;
+  }
   *{
     box-sizing: border-box;
   }
@@ -19,6 +24,7 @@
     padding: 0;
     margin: 0;
   }
+  
   .header{
     display: flex;
     justify-content: space-between;
@@ -43,3 +49,17 @@
   .jobs-list-container .jobs-container.expanded .card:nth-child(n+13){
     display: initial;
   }
+  .imageCont span{
+    display: block!important;
+    height: 100%!important;
+    width: 100%!important;
+  }
+  .logoImage{
+    width: 40px!important;
+    height: 40px!important;
+    top: 50%!important;
+    left: 50%!important;
+    transform: translate3d(-50%, -50%, 0)!important;
+    margin: initial!important;
+  min-width: initial!important;
+  min-height: initial!important;}

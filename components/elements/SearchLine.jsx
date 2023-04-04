@@ -8,39 +8,21 @@ import MenuItem from '@mui/material/MenuItem';
 import Image from 'next/image';
 
 export default function SearchLine( props) {
-
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
-    function searchChangeHandle(e){
-        let filterCountriesArray =  [];
-        props.dataInf.map((countries) => {
-          let strValue = e.target.value;
-          for (let country of countries)
-                { 
-                  let inpValue=capitalizeFirstLetter(strValue);
-                  if ((country?.name).startsWith(inpValue))
-                  {filterCountriesArray.push(country);
-                }
-              }
-          return filterCountriesArray;
-        });
-        props.setSearchData(getCardRowsData(filterCountriesArray));
-  }
   function handleChange(e){
-    console.log(e.target.value)
-    props.data.map((job) => {
-      job.position
-    });
+    (props.type!="basic")? document.getElementById("locationSearch").value = e.target.value : document.getElementById("basicSearch").value = e.target.value;
+  }
+  function handleChangeInput(e){
+    (props.type!="basic")? document.getElementById("locationSearch").value = e.target.value : document.getElementById("basicSearch").value = e.target.value;
   }
    
+   
   return (<FormControl variant="standard">
-            <InputLabel htmlFor="input-with-icon-adornment">
+            <InputLabel htmlFor={props.id}>
             {props.label}
             </InputLabel>
-            <Input onChange={handleChange}
-              id="input-with-icon-adornment"
+            <Input 
+            onChange={handleChangeInput}
+              id={props.id}
               startAdornment={
                 <InputAdornment position="start">
                   <Image
@@ -53,12 +35,13 @@ export default function SearchLine( props) {
                 </InputAdornment>
               }
             />
-            <TextField id="select" select onChange={handleChange}>
-              {(props.type=="basic")?props.data.map((job) => {
-              if (job.company!=undefined){return <MenuItem>{job.company}</MenuItem>}
-              if (job.position!=undefined){return <MenuItem>{job.position}</MenuItem>}
-              }):props.data.map((job) => {
-                if (job.location!=undefined){return <MenuItem>{job.location}</MenuItem>}
+            <TextField id={`${props.id}-select`} select 
+            onChange={handleChange}
+            >
+              {(props.type=="basic")?Object.getOwnPropertyNames(props.searchData.companies).map((comp) => {
+              if (comp!=undefined){return <MenuItem value={comp}>{comp}</MenuItem>}
+              }):Object.getOwnPropertyNames(props.searchData.countries).map((loc) => {
+                if (loc!=undefined){return <MenuItem value={loc}>{loc}</MenuItem>}
                   })}
           </TextField>
           </FormControl>)

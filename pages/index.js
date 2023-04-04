@@ -1,14 +1,9 @@
 import React, {createContext} from "react";
-import JobCard from "../components/JobCard";
 import { Container, Typography } from "@mui/material";
-import Header from "../components/elements/Header";
-import Button from "@mui/material/Button";
-import { useTheme } from '@mui/material/styles';
-import JobsList from "../components/JobsList"; 
 import Main from  "../components/Main"
 
 const dev = process.env.NODE_ENV !== 'production';
-export const server = dev ? 'http://localhost:3000' : '';
+export const server = dev ? 'http://localhost:3000' : 'http://localhost:3000';
 
 export async function getStaticProps(){
   const res = await fetch( `${server}/data.json`);
