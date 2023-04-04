@@ -12,11 +12,19 @@ export default function Main() {
     const theme = useTheme();
     const colorMode = useContext(ColorModeContext);
     const data = useContext(DataContext);
+    const [searchQuery, setSearchQuery] = useState(data.map((job)=> {return job.id}));
+    const [filterData, setFilterData] = useState(useContext(DataContext));
+    
+    useEffect (()=>
+    { console.log(searchQuery);
+      setFilterData(data.filter((job)=>{return searchQuery.indexOf(job.id)!="-1"}))
+    },[searchQuery])
+
     return (<Container maxWidth="false" variant="body2" disableGutters={true}>  
     <Header/>
-    <SearchForm />
+    <SearchForm setSearchQuery={setSearchQuery} searchQuery={searchQuery}/>
     <JobsList>
-      {data.map((job)=>{
+      {filterData.map((job)=>{
         return(
         <JobCard info={job} key={job.id}/>)})}
         </JobsList>

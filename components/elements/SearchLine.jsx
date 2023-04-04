@@ -4,6 +4,7 @@ import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
 import Image from 'next/image';
 
 export default function SearchLine( props) {
@@ -30,7 +31,7 @@ export default function SearchLine( props) {
   function handleChange(e){
     console.log(e.target.value)
     props.data.map((job) => {
-      console.log(job.id);
+      job.position
     });
   }
    
@@ -48,8 +49,17 @@ export default function SearchLine( props) {
                 width={12}
                 src={props.pic}
                 />
+
                 </InputAdornment>
               }
             />
+            <TextField id="select" select onChange={handleChange}>
+              {(props.type=="basic")?props.data.map((job) => {
+              if (job.company!=undefined){return <MenuItem>{job.company}</MenuItem>}
+              if (job.position!=undefined){return <MenuItem>{job.position}</MenuItem>}
+              }):props.data.map((job) => {
+                if (job.location!=undefined){return <MenuItem>{job.location}</MenuItem>}
+                  })}
+          </TextField>
           </FormControl>)
   }
