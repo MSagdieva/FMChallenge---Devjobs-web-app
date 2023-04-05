@@ -660,7 +660,7 @@ function Main() {
 
 
 const dev = "production" !== "production";
-const server = dev ? "http://localhost:3000" : "http://fm-challenge-devjobs-web-app.vercel.app";
+const server = dev ? "http://localhost:3000" : "https://raw.githubusercontent.com/MSagdieva/FMChallenge---Devjobs-web-app/main/public";
 async function getStaticProps() {
     const res = await fetch(`${server}/data.json`);
     const allJobsData = await res.json();

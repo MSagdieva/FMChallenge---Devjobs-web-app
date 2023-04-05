@@ -9,8 +9,7 @@ import {ColorModeContext} from "../_app";
 
 
 const dev = process.env.NODE_ENV !== 'production';
-export const server = dev ? 'http://localhost:3000' : 'http://fm-challenge-devjobs-web-app.vercel.app';
-
+export const server = dev ? 'http://localhost:3000' : 'https://raw.githubusercontent.com/MSagdieva/FMChallenge---Devjobs-web-app/main/public';
 export async function getStaticProps(){
   const res = await fetch( `${server}/data.json`);
   const allJobsData = await res.json();
