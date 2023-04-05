@@ -85,7 +85,7 @@ export default function SearchForm(props) {
           }
           label="Full time only"
         />
-  <Button onClick={changeSearchData}>Search</Button>
+  <Button variant="basic" onClick={changeSearchData}>Search</Button>
   </Container>
 </Container>)
 }

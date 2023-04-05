@@ -10,10 +10,8 @@
     /* Add additional src lines for other file formats */
   }
   $primaryColor: #5964E0;
-  .css-llkcrc-MuiContainer-root{
+  .MuiContainer-root#pageContainer{
     min-height: 100vh;
-  }
-  .css-llkcrc-MuiContainer-root{
     border-radius: 15px;
   }
   *{
@@ -55,8 +53,8 @@
     width: 100%!important;
   }
   .logoImage{
-    width: 40px!important;
-    height: 40px!important;
+    width: 60px!important;
+    height: initial!important;
     top: 50%!important;
     left: 50%!important;
     transform: translate3d(-50%, -50%, 0)!important;

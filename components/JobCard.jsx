@@ -16,12 +16,8 @@ export default function JobCard(info) {
       `;
     return (<Link href={`/detail/${encodeURIComponent(info.info.id)}`}>
       <CustomizedCard className={"card"} sx={{ maxWidth: 345 }}>
-        <CardHeader
-          avatar={
             <Avatar variant="square" style={{backgroundColor: info.info.logoBackground}} src={logoAddress}>
             </Avatar>
-          }
-        />
         <CardContent>
         <Typography variant="body2">
             {info.info.postedAt} {"\u25CF"} {info.info.contract}

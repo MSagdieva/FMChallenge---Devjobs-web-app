@@ -15,7 +15,7 @@ export default function JobsList(props) {
                     style={{display:"grid", gridTemplateColumns: "1fr 1fr 1fr", gridRowGap: 20, margin: "0 auto" }}>
                     {props.children}
             </Container>
-            <Button onClick={changeExpanded}>{!expanded? "Load More":"Hide"}</Button>
+            <Button variant="basic" onClick={changeExpanded}>{!expanded? "Load More":"Hide"}</Button>
           </Container>
       )
   }

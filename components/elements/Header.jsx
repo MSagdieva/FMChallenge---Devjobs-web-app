@@ -13,6 +13,8 @@ const Header = (props) => {
     `&:hover{
       cursor: pointer;
     }
+    @media (max-width:780px){
+    }
     `;
   const CustomizedHeader = styled(Container)`
       background: url("/assets/desktop/bg-pattern-header.svg") no-repeat 0% 0%;
@@ -22,6 +24,16 @@ const Header = (props) => {
       margin: 0 auto;
       display: flex;
       justify-content: center;
+      @media (max-width:780px){
+        height: 160px;
+        background: url("/assets/tablet/bg-pattern-header.svg") no-repeat 0% 0%;
+        background-size: 100% 100%;
+      }
+      @media (max-width:420px){
+        height: 130px;
+        background: url("/assets/mobile/bg-pattern-header.svg") no-repeat 0% 0%;
+        background-size: 100% 100%;
+      }
       `;
   const CustomizedSwitch = styled((props) => (
         <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -102,7 +114,7 @@ const Header = (props) => {
       <CustomizedHeader maxWidth="false">
           <header className="header">
             <Typography variant="h6">{"devJobs"}</Typography>
-            <div sytle={{display: "flex", alignItems: "center"}}>
+            <div style={{display: "flex", alignItems: "center"}}>
               <CustomImage onClick={handleChangeSun}
                 id="sun"
                 priority

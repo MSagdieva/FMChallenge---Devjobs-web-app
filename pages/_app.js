@@ -15,7 +15,7 @@ export const ColorModeContext = createContext({ toggleColorMode: () => {}, theme
           root: {
           padding: 0,
           margin: 0,
-          backgroundColor: mode === "light"? "#FFF": "#000",}}
+          backgroundColor: mode === "light"? "#F4F6F8":"#121721",}}
       },
       MuiTypography: {
         styleOverrides: {
@@ -23,19 +23,42 @@ export const ColorModeContext = createContext({ toggleColorMode: () => {}, theme
           padding: 0}}
       },
       MuiButton: {
-        styleOverrides: {
-          root: {
-          backgroundColor:"#5964E0",
-          color: "#FFF"}
-        },
+        variants: [
+          {
+            props: { variant: 'basic' },
+            style: {
+              backgroundColor:"#5964E0",
+              color: "#FFF",
+              fontWeight: "700",
+              fontSize: "16px",
+              lineHeight: "20px",
+              textTransform: "capitalize",
+              width:"147px",
+              padding:16,
+            },
+          },
+          {
+            props: { variant: 'grey'},
+            style: {
+              backgroundColor:"#C9C9C9",
+              color: "#5964E0",
+              textTransform: "capitalize",
+              fontSize: "16px",
+              lineHeight: "20px",
+              width:"141px",
+              padding:16,
+            },
+          },
+        ],
       },
       MuiAvatar: {
         styleOverrides: {
           root:{
             position: "relative",
-            top: -40,
-            zIndex:2,
-            borderRadius: 20},
+            top: -20,
+            left: 20,
+            zIndex: 2,
+            borderRadius: 15},
           img: {
             objectFit: "contain",
             height: "initial",
