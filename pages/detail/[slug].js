@@ -5,10 +5,11 @@ import { Container, Typography } from "@mui/material";
 import { Paper, Button } from "@mui/material";
 import Image from 'next/image';
 import { styled } from '@mui/material/styles';
+import {ColorModeContext} from "../_app";
 
 
 const dev = process.env.NODE_ENV !== 'production';
-export const server = dev ? 'http://localhost:3000' : 'http://localhost:3000';
+export const server = dev ? 'http://localhost:3000' : 'http://fm-challenge-devjobs-web-app.vercel.app';
 
 export async function getStaticProps(){
   const res = await fetch( `${server}/data.json`);
@@ -33,12 +34,13 @@ export async function getStaticPaths() {
   
 
 export default function Detail({allJobsData}) {
+    const mode = useContext(ColorModeContext);
     const router = useRouter();
     const { slug } = router.query;
     const logoAddres = `${server}${allJobsData[slug-1].logo.slice(1)}`;
-    const CustomizedTypography = styled((props) => (<Typography variant="body1">{props.children}</Typography>
-    ))(({ theme }) => ({
-      color: theme.palette.mode === 'light'
+    const CustomizedTypography = styled((props) => (<Typography variant="body1" {...props}>{props.children}</Typography>
+    ))(() => ({
+      color: mode.themeMode === 'light'
                 ? "#000"
                 : "#FFF",
               }));
@@ -56,7 +58,7 @@ export default function Detail({allJobsData}) {
                     </div>
                     <div style={{width: "50%"}}>
                     <CustomizedTypography variant="body1">{allJobsData[slug-1].company}</CustomizedTypography><CustomizedTypography variant="body1">{allJobsData[slug-1].website}</CustomizedTypography>
-                    <Typography variant="body1">{allJobsData[slug-1].company}</Typography></div>
+                    </div>
                     <Button>Apply</Button>
             </Container>
             <Container maxWidth="md" disableGutters={true} style={{display: "flex", justifyContent: "center", margin: "20px auto", padding: 20}}>

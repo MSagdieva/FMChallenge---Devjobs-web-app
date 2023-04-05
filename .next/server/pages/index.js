@@ -461,14 +461,14 @@ function SearchLine(props) {
                         return /*#__PURE__*/ jsx_runtime_.jsx((MenuItem_default()), {
                             value: comp,
                             children: comp
-                        });
+                        }, comp);
                     }
                 }) : Object.getOwnPropertyNames(props.searchData.countries).map((loc)=>{
                     if (loc != undefined) {
                         return /*#__PURE__*/ jsx_runtime_.jsx((MenuItem_default()), {
                             value: loc,
                             children: loc
-                        });
+                        }, loc);
                     }
                 })
             })
@@ -660,7 +660,7 @@ function Main() {
 
 
 const dev = "production" !== "production";
-const server = dev ? "http://localhost:3000" : "http://localhost:3000";
+const server = dev ? "http://localhost:3000" : "http://fm-challenge-devjobs-web-app.vercel.app";
 async function getStaticProps() {
     const res = await fetch(`${server}/data.json`);
     const allJobsData = await res.json();

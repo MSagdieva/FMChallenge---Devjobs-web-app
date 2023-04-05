@@ -39,9 +39,9 @@ export default function SearchLine( props) {
             onChange={handleChange}
             >
               {(props.type=="basic")?Object.getOwnPropertyNames(props.searchData.companies).map((comp) => {
-              if (comp!=undefined){return <MenuItem value={comp}>{comp}</MenuItem>}
+              if (comp!=undefined){return <MenuItem value={comp} key={comp}>{comp}</MenuItem>}
               }):Object.getOwnPropertyNames(props.searchData.countries).map((loc) => {
-                if (loc!=undefined){return <MenuItem value={loc}>{loc}</MenuItem>}
+                if (loc!=undefined){return <MenuItem value={loc} key={loc}>{loc}</MenuItem>}
                   })}
           </TextField>
           </FormControl>)

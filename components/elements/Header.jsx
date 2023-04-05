@@ -80,19 +80,20 @@ const Header = (props) => {
       }));
   const handleChange = function(e){
     colorMode.toggleColorMode();
-    console.log(e.target.id);
+    colorMode.themeMode === 'light' ? 'dark' : 'light',
     setChecked(!checked);
   }
   const handleChangeSun = function(e){
     if (checked == true) {
       colorMode.toggleColorMode();
+      colorMode.themeMode === 'light' ? 'dark' : 'light',
       setChecked(false);
     }
   }
-
   const handleChangeMoon = function(e){
     if (checked == false) {
       colorMode.toggleColorMode();
+      colorMode.themeMode === 'light' ? 'dark' : 'light',
        setChecked(true);
     }
   }

@@ -3,7 +3,7 @@
  */
  const nextConfig = {
     images: {
-      domains: ['localhost'],
+      domains: ['localhost', 'fm-challenge-devjobs-web-app.vercel.app'],
     },
   };
   export default nextConfig;

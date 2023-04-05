@@ -1,9 +1,9 @@
-import React, {createContext} from "react";
+import React, {createContext, useContext} from "react";
 import { Container, Typography } from "@mui/material";
-import Main from  "../components/Main"
+import Main from  "../components/Main";
 
 const dev = process.env.NODE_ENV !== 'production';
-export const server = dev ? 'http://localhost:3000' : 'http://localhost:3000';
+export const server = dev ? 'http://localhost:3000' : 'http://fm-challenge-devjobs-web-app.vercel.app';
 
 export async function getStaticProps(){
   const res = await fetch( `${server}/data.json`);

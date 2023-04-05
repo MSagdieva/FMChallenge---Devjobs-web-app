@@ -3,7 +3,7 @@ import '../public/assets/styles/globals.scss';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 
-export const ColorModeContext = createContext({ toggleColorMode: () => {} });
+export const ColorModeContext = createContext({ toggleColorMode: () => {}, themeMode: "" });
 
   const getDesignTokens = (mode) => ({
     typography: {
@@ -82,19 +82,19 @@ export const ColorModeContext = createContext({ toggleColorMode: () => {} });
   
 const MyApp = ({ Component, pageProps }) => {
 const [mode, setMode] = useState('light');
+const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 const colorMode = useMemo(
     () => ({
-      // The dark mode switch would invoke this method
       toggleColorMode: () => {
         setMode((prevMode) =>
           prevMode === 'light' ? 'dark' : 'light',
         );
-      }
+      },
+      themeMode: mode
     }),
-    [],
+    [mode],
   );
-
-  const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+  
 
     return (<ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
