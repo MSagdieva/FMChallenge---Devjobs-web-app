@@ -2,8 +2,7 @@ import React, {useState, useEffect, useContext} from "react";
 import {useRouter} from 'next/router';
 import Header from '../../components/elements/Header';
 import Footer from '../../components/elements/Footer';
-import { Container, Typography } from "@mui/material";
-import { Paper, Button } from "@mui/material";
+import { Container, Typography, Paper, Button, List, ListItem  } from "@mui/material";
 import Image from 'next/image';
 import { styled } from '@mui/material/styles';
 import {ColorModeContext} from "../_app";
@@ -61,7 +60,7 @@ export default function Detail({allJobsData}) {
     return (<div style={{backgroundColor: mode.themeMode === 'light'?"#F4F6F8":"#121721"}}>
         <Header page="inner"/>
           <div maxWidth="false" disableGutters={true} id="pageContainer" >
-              <CustomContainer disableGutters={true} maxWidth="md">
+              <CustomContainer disableGutters={true} maxWidth="md" style={{backgroundColor: mode.themeMode === 'light'?"#FFF":"#212121"}}>
                       <div className="imageCont" style={{backgroundColor: allJobsData[slug-1].logoBackground, width: 140, height: 140, position: "relative"}}>
                       <Image
                       width={40}
@@ -92,16 +91,16 @@ export default function Detail({allJobsData}) {
                       <div class="requirements">
                       <Typography variant="h6">{"Requirements"}</Typography>
                         <Typography variant="body1">{allJobsData[slug-1].requirements.content}</Typography>
-                          <ul>
-                          {allJobsData[slug-1].requirements.items.map((item)=>{return <li>{item}</li>})}
-                        </ul>
+                          <List>
+                          {allJobsData[slug-1].requirements.items.map((item)=>{return <ListItem>{item}</ListItem>})}
+                        </List>
                       </div>
                       <div class="role">
                       <Typography variant="h6">{"What will you do"}</Typography>
                         <Typography variant="body1">{allJobsData[slug-1].role.content}</Typography>
-                          <ol>
-                          {allJobsData[slug-1].role.items.map((item)=>{return <li>{item}</li>})}
-                        </ol>
+                          <List>
+                          {allJobsData[slug-1].role.items.map((item)=>{return <ListItem>{item}</ListItem>})}
+                        </List>
                       </div>
                   </CustomPaper>
               </Container>
