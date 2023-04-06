@@ -24,6 +24,10 @@ export const ColorModeContext = createContext({ toggleColorMode: () => {}, theme
           h6:{
             fontFamily: "'KumbhSans-Bold', sans-serif",
             marginTop:20,
+          },
+          h5:{
+            fontFamily: "'KumbhSans-Bold', sans-serif",
+            color: "#FFF",
           }
         }
       },
@@ -74,7 +78,24 @@ export const ColorModeContext = createContext({ toggleColorMode: () => {}, theme
         root: {
         color: mode === "light"? "#000": "#FFF",}
       }
-    }},
+    },
+    MuiListItemIcon:{
+      styleOverrides: {
+        root: {
+          color: "#5964E0",
+          fontFamily: "'KumbhSans-Bold', sans-serif",
+          minWidth: 25,
+        },
+    }
+  },
+  MuiListItem:{
+    styleOverrides: {
+      root: {
+       paddingLeft: 0,
+       alignItems: "flex-start",
+      },
+  }
+}},
     palette: {
       mode,
       ...(mode === 'light'

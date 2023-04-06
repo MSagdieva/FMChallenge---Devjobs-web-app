@@ -113,7 +113,7 @@ const Header = (props) => {
       return (
       <CustomizedHeader maxWidth="false">
           <header className="header">
-            <Typography variant="h6">{"devJobs"}</Typography>
+            <Typography variant="h5">{"devJobs"}</Typography>
             <div style={{display: "flex", alignItems: "center"}}>
               <CustomImage onClick={handleChangeSun}
                 id="sun"

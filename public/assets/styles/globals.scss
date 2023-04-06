@@ -10,10 +10,6 @@
     /* Add additional src lines for other file formats */
   }
   $primaryColor: #5964E0;
-  .MuiContainer-root#pageContainer{
-    min-height: 100vh;
-    border-radius: 15px;
-  }
   *{
     box-sizing: border-box;
   }
@@ -68,3 +64,8 @@
     margin: initial!important;
   min-width: initial!important;
   min-height: initial!important;}
+
+  .MuiContainer-root#pageContainer{
+    min-height: 100vh;
+    border-radius: 15px;
+  }

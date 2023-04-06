@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from "react";
 import {useRouter} from 'next/router';
 import Header from '../../components/elements/Header';
 import Footer from '../../components/elements/Footer';
-import { Container, Typography, Paper, Button, List, ListItem  } from "@mui/material";
+import { Container, Typography, Paper, Button, List, ListItem, ListItemIcon  } from "@mui/material";
 import Image from 'next/image';
 import { styled } from '@mui/material/styles';
 import {ColorModeContext} from "../_app";
@@ -31,6 +31,10 @@ export async function getStaticPaths() {
       fallback: false, // can also be true or 'blocking'
     }
   }
+
+  function genKey(string){
+    return string.toString().slice(1, 8)+Math.random()*10
+  }
   
 
 export default function Detail({allJobsData}) {
@@ -43,7 +47,7 @@ export default function Detail({allJobsData}) {
     `&{padding:40px;}
     `;
     const CustomButton= styled(Button)
-    `&{}
+    `&{margin-right:40px;}
     `;
     const CustomContainer= styled(Container)
     `&{display: flex;
@@ -92,14 +96,19 @@ export default function Detail({allJobsData}) {
                       <Typography variant="h6">{"Requirements"}</Typography>
                         <Typography variant="body1">{allJobsData[slug-1].requirements.content}</Typography>
                           <List>
-                          {allJobsData[slug-1].requirements.items.map((item)=>{return <ListItem>{item}</ListItem>})}
+                          {allJobsData[slug-1].requirements.items.map((item,i)=>{
+                            return <ListItem key={genKey(item)}><ListItemIcon id="listIcon">{"\u25CF"}</ListItemIcon>
+                              {item}</ListItem>
+                            })}
                         </List>
                       </div>
                       <div class="role">
                       <Typography variant="h6">{"What will you do"}</Typography>
                         <Typography variant="body1">{allJobsData[slug-1].role.content}</Typography>
                           <List>
-                          {allJobsData[slug-1].role.items.map((item)=>{return <ListItem>{item}</ListItem>})}
+                          {allJobsData[slug-1].role.items.map((item,index)=>{
+                            return <ListItem key={genKey(item)}><ListItemIcon id="listIcon">{index+1}</ListItemIcon>{item}</ListItem>
+                            })}
                         </List>
                       </div>
                   </CustomPaper>

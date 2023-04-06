@@ -14,16 +14,18 @@ export default function Main() {
     const data = useContext(DataContext);
     const [searchQuery, setSearchQuery] = useState(data.map((job)=> {return job.id}));
     const [filterData, setFilterData] = useState(useContext(DataContext));
+    const [isSearchQuery, setIsSearchQuery] = useState(false);
     
     useEffect (()=>
     {
       setFilterData(data.filter((job)=>{return searchQuery.indexOf(job.id)!="-1"}))
+      searchQuery.length == data.length ? setIsSearchQuery(false) : setIsSearchQuery(true);
     },[searchQuery])
 
     return (<Container maxWidth="false" variant="body2" disableGutters={true}>  
     <Header/>
     <SearchForm setSearchQuery={setSearchQuery} searchQuery={searchQuery}/>
-    <JobsList>
+    <JobsList isSearchQuery={isSearchQuery}>
       {filterData.map((job)=>{
         return(
         <JobCard info={job} key={job.id}/>)})}

@@ -1,41 +1,39 @@
 import React, { useContext } from "react";
-import Input from '@mui/material/Input';
-import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
+import {Input,FormControl,Box, TextField}  from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Image from 'next/image';
 
 export default function SearchLine( props) {
-  function handleChange(e){
-    (props.type!="basic")? document.getElementById("locationSearch").value = e.target.value : document.getElementById("basicSearch").value = e.target.value;
-  }
+  // function handleChange(e){
+  //   if(props.type!="basic")
+  //    { document.getElementById("locationSearch").value = e.target.value;
+
+// } 
+  //    else
+  //    {document.getElementById("basicSearch").value = e.target.value;
+  // };
+  // }
   function handleChangeInput(e){
-    (props.type!="basic")? document.getElementById("locationSearch").value = e.target.value : document.getElementById("basicSearch").value = e.target.value;
+    if(props.type!="basic")
+     { document.getElementById("locationSearch").value = e.target.value;} 
+     else
+     {document.getElementById("basicSearch").value = e.target.value;};
   }
    
    
   return (<FormControl variant="standard">
-            <InputLabel htmlFor={props.id}>
-            {props.label}
-            </InputLabel>
-            <Input 
-            onChange={handleChangeInput}
-              id={props.id}
-              startAdornment={
-                <InputAdornment position="start">
-                  <Image
+          <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+          <Image
                 priority
-                height={12}
-                width={12}
+                height={20}
+                width={16}
                 src={props.pic}
                 />
-
-                </InputAdornment>
-              }
-            />
-            <TextField id={`${props.id}-select`} select 
+        <TextField id={props.id} label={props.label} onChange={handleChangeInput} variant="standard"/>
+      </Box>
+            {/* <TextField id={`${props.id}-select`} select 
             onChange={handleChange}
             >
               {(props.type=="basic")?Object.getOwnPropertyNames(props.searchData.companies).map((comp) => {
@@ -43,6 +41,6 @@ export default function SearchLine( props) {
               }):Object.getOwnPropertyNames(props.searchData.countries).map((loc) => {
                 if (loc!=undefined){return <MenuItem value={loc} key={loc}>{loc}</MenuItem>}
                   })}
-          </TextField>
+          </TextField> */}
           </FormControl>)
   }
