@@ -24,8 +24,6 @@ const Footer = (props) => {
       align-items:center;
       justify-content:center;
       @media (max-width:420px){
-        background: url("/assets/mobile/bg-pattern-detail-footer.svg") no-repeat 0% 0%;
-        background-size: 100% 100%;
       }
       `;
   

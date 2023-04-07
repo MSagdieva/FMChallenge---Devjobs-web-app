@@ -50,10 +50,20 @@
   .jobs-list-container .jobs-container.expanded .card:nth-child(n+13){
     display: initial;
   }
+  .imageCont{
+    width: 140px;
+    height: 140px; 
+    @media (max-width: 420px) {
+    height: 40px;
+    width: 40px;
+    top: -20px;
+  }
+  }
   .imageCont span{
     display: block!important;
     height: 100%!important;
     width: 100%!important;
+
   }
   .logoImage{
     width: 60px!important;
@@ -63,9 +73,18 @@
     transform: translate3d(-50%, -50%, 0)!important;
     margin: initial!important;
   min-width: initial!important;
-  min-height: initial!important;}
+  min-height: initial!important;
+  @media (max-width: 420px) {
+    width: 20px;
+  }
+}
 
   .MuiContainer-root#pageContainer{
     min-height: 100vh;
     border-radius: 15px;
+  }
+  .detailInfoHeaderLinks{
+    @media (max-width: 420px) {
+      text-align: center;
+    }
   }

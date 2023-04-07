@@ -44,16 +44,32 @@ export default function Detail({allJobsData}) {
     const logoAddres = `${server}${allJobsData[slug-1].logo.slice(1)}`;
 
     const CustomPaper = styled(Paper)
-    `&{padding:40px;}
+    `&{padding:40px;
+      @media (max-width:420px){
+        padding:40px;
+        width: calc(100% - 40px);
+        border-radius:4px;
+      }}}
     `;
     const CustomButton= styled(Button)
-    `&{margin-right:40px;}
+    `&{margin-right:40px;
+      @media (max-width:420px){
+        margin-right:0;
+      }}
     `;
     const CustomContainer= styled(Container)
     `&{display: flex;
      justify-content: space-between;
      margin: 20px auto;
-     align-items: center}
+     align-items: center;
+     @media (max-width:780px){
+
+    }
+    @media (max-width:420px){
+      flex-direction: column;
+      width: calc(100% - 40px);
+      border-radius:4px;
+    }}
     `;
     const CustomizedTypography = styled((props) => (<Typography variant="body1" {...props}>{props.children}</Typography>
     ))(() => ({
@@ -65,7 +81,7 @@ export default function Detail({allJobsData}) {
         <Header page="inner"/>
           <div maxWidth="false" disableGutters={true} id="pageContainer" >
               <CustomContainer disableGutters={true} maxWidth="md" style={{backgroundColor: mode.themeMode === 'light'?"#FFF":"#212121"}}>
-                      <div className="imageCont" style={{backgroundColor: allJobsData[slug-1].logoBackground, width: 140, height: 140, position: "relative"}}>
+                      <div className="imageCont" style={{backgroundColor: allJobsData[slug-1].logoBackground, position: "relative",}}>
                       <Image
                       width={40}
                       height= {40}
@@ -73,7 +89,7 @@ export default function Detail({allJobsData}) {
                       className="logoImage"
                   />
                       </div>
-                      <div style={{width: "50%"}}>
+                      <div className="detailInfoHeaderLinks" style={{width: "50%"}}>
                       <CustomizedTypography variant="body1">{allJobsData[slug-1].company}</CustomizedTypography>
                       <CustomizedTypography variant="body1">{(allJobsData[slug-1].company).toLowerCase()}{".com"}</CustomizedTypography>
                       </div>
@@ -83,7 +99,7 @@ export default function Detail({allJobsData}) {
               </CustomContainer>
               <Container maxWidth="md" disableGutters={true} style={{display: "flex", justifyContent: "center", margin:"0 auto"}}>
                   <CustomPaper>
-                      <div class="paperHeading" style={{display:"flex", justifyContent:"space-between", alignItems: "center"}}>
+                      <div className="paperHeading" style={{display:"flex", justifyContent:"space-between", alignItems: "center"}}>
                       <div style={{width: "50%"}}>
                         <Typography variant="body1">{allJobsData[slug-1].postedAt}{" "}{allJobsData[slug-1].contract}</Typography>
                         <Typography variant="h6">{allJobsData[slug-1].position}</Typography>
@@ -92,7 +108,7 @@ export default function Detail({allJobsData}) {
                       <Link href={allJobsData[slug-1].apply}><Button variant="basic">Apply</Button></Link>
                       </div>
                       <Typography variant="body1" style={{paddingTop:20}}>{allJobsData[slug-1].description}</Typography>
-                      <div class="requirements">
+                      <div className="requirements">
                       <Typography variant="h6">{"Requirements"}</Typography>
                         <Typography variant="body1">{allJobsData[slug-1].requirements.content}</Typography>
                           <List>
