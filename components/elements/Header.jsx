@@ -25,11 +25,11 @@ const Header = (props) => {
       display: flex;
       justify-content: center;
       @media (max-width:780px){
-        height: 160px;
+        height: 140px;
         background: url("/assets/tablet/bg-pattern-header.svg") no-repeat 0% 0%;
         background-size: 100% 100%;
       }
-      @media (max-width:420px){
+      @media (max-width:475px){
         height: 130px;
         background: url("/assets/mobile/bg-pattern-header.svg") no-repeat 0% 0%;
         background-size: 100% 100%;
@@ -38,17 +38,22 @@ const Header = (props) => {
   const CustomizedSwitch = styled((props) => (
         <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
       ))(({ theme }) => ({
-        width: 30,
-        height: 18,
+        width: 48,
+        height: 24,
         padding: 0,
         margin: 20,
         '& .MuiSwitch-switchBase': {
           padding: 0,
           margin: 3,
+          top: 1,
           width: '28%',
           transitionDuration: '300ms',
+          '& .MuiSwitch-input':{
+            width: "100%",
+            left: 0,
+          },
           '&.Mui-checked': {
-            transform: 'translateX(16px)',
+            transform: 'translateX(28px)',
             color: '#fff',
             '& + .MuiSwitch-track': {
               opacity: 1,
@@ -78,8 +83,8 @@ const Header = (props) => {
         },
         '& .MuiSwitch-thumb': {
           boxSizing: 'border-box',
-          width: 20,
-          height: 11,
+          width: 14,
+          height: 14,
         },
         '& .MuiSwitch-track': {
           borderRadius: 26 / 2,
@@ -114,20 +119,20 @@ const Header = (props) => {
       <CustomizedHeader maxWidth="false">
           <header className="header">
             <Typography variant="h5">{"devJobs"}</Typography>
-            <div style={{display: "flex", alignItems: "center"}}>
+            <div style={{display: "flex", alignItems: "center", width: 112, justifyContent: "space-between"}}>
               <CustomImage onClick={handleChangeSun}
                 id="sun"
                 priority
-                height={12}
-                width={12}
+                height={150}
+                width={180}
                 src="/assets/desktop/icon-sun.svg"
                 />
               <CustomizedSwitch checked = {checked} onChange = {handleChange}/>
               <CustomImage onClick={handleChangeMoon}
                 id="moon"
                 priority
-                height={12}
-                width={12}
+                height={100}
+                width={100}
                 src="/assets/desktop/icon-moon.svg"
                 />
             </div>

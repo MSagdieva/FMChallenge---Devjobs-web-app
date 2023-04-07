@@ -71,12 +71,22 @@ export const ColorModeContext = createContext({ toggleColorMode: () => {}, theme
           img: {
             objectFit: "contain",
             height: "initial",
+            width: "70%"
           }}
         },
       MuiFormControlLabel: {
       styleOverrides: {
         root: {
         color: mode === "light"? "#000": "#FFF",}
+      },
+      MuiFormLabel:{
+        styleOverrides: {
+          root: {
+            fontSize: 16,
+            lineHeight: 20,
+            color:"#f2e2e2"
+          }
+        }
       }
     },
     MuiListItemIcon:{

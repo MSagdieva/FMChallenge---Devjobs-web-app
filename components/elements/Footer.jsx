@@ -7,12 +7,14 @@ import Image from 'next/image';
 
 const Footer = (props) => {
   const ColMode = useContext(ColorModeContext);
-  const CustomImage = styled(Image)
-    `&:hover{
-      cursor: pointer;
-    }
-    @media (max-width:780px){
-    }
+  const CustomContainer = styled(Container)
+    `&{display: flex;
+     align-items: center;
+     justify-content: space-between;
+     background-color:transparent;
+    @media (max-width:475px){
+      justify-content: center;
+    }}
     `;
   const CustomizedFooter= styled(Container)`
       background-color: ${ColMode.themeMode == "light"? "#FFF": "#212121"};
@@ -23,16 +25,16 @@ const Footer = (props) => {
       display: flex;
       align-items:center;
       justify-content:center;
-      @media (max-width:420px){
+      @media (max-width:475px){
       }
       `;
   
 
       return (
       <CustomizedFooter maxWidth="false">
-            <Container maxWidth="md" style={{display: "flex", alignItems: "center", justifyContent: "space-between", backgroundColor:"transparent"}}>
+            <CustomContainer maxWidth="md">
               {props.children}
-            </Container>
+            </CustomContainer>
         </CustomizedFooter>
       )
   }

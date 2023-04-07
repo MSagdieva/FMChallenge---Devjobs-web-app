@@ -2,16 +2,48 @@ import React, {useState, useEffect, useContext} from "react";
 import SearchLine from "./elements/SearchLine";
 import { Checkbox, FormControlLabel, Button, Container } from "@mui/material";
 import {DataContext} from "../pages/index";
+import { styled } from '@mui/material/styles';
+import {ColorModeContext} from "../pages/_app";
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 export default function SearchForm(props) {
+  const ColMode = useContext(ColorModeContext);
+  const SearchWrapContainer = styled(Container)
+  `&{display: flex;
+   justify-content: center;
+   margin: 0 auto;
+   @media (max-width:780px){
+
+  }
+  @media (max-width:475px){
+  }}
+  `;
+  const SearchInnerContainer = styled(Container)
+  `&{display: flex;
+   justify-content: space-between;
+   alignItems: center;
+   background-color: ${ColMode.themeMode == "light"? "#FFF": "#212121"};
+   color: ${ColMode.themeMode == "light"? "#000": "#FFF"};
+   position:relative;
+   top:-50px;
+   border-radius: 6px;
+   margin: 0 auto;
+   padding: 20px;
+   @media (max-width:780px){
+
+  }
+  @media (max-width:475px){
+   flex-direction: column;
+   justify-content: center;
+   align-items: center
+  }}
+  `;
   const data = useContext(DataContext);
   const [searchData, setSearchData] = useState(createDataForSearch());
-    const defaultArray = data.map((job)=>{return job.id});
-
+  const defaultArray = data.map((job)=>{return job.id});
 
   useEffect (()=>
   { 
@@ -46,6 +78,7 @@ export default function SearchForm(props) {
               objKey[propName].push(id);
             }
   }
+
   function changeSearchData(){
     if (!document.getElementById("fulltime").checked&&document.getElementById("locationSearch").value==""&&document.getElementById("basicSearch").value=="")
     {props.setSearchQuery(defaultArray);
@@ -75,8 +108,8 @@ export default function SearchForm(props) {
     }
   }
   return(
-<Container maxWidth="false" style={{margin: "0 auto", display: "flex", justifyContent: "center"}}>
-  <Container maxWidth="md" style={{display: "flex", justifyContent: "space-between", alignItems:"center", position: "relative", top:"-50px", borderRadius: "4px"}}>
+<SearchWrapContainer maxWidth="false">
+  <SearchInnerContainer maxWidth="md">
   <SearchLine id="basicSearch" type="basic" label="Filter by title, companies, expertise..." pic="/assets/desktop/icon-search.svg" searchData={searchData} data={data} setSearchQuery={props.searchQuery}/>
   <SearchLine id="locationSearch" type= "location" label="Filter by location..." pic="/assets/desktop/icon-location.svg" searchData={searchData} data={data} setSearchQuery={props.searchQuery}/>
   <FormControlLabel
@@ -86,6 +119,6 @@ export default function SearchForm(props) {
           label="Full time only"
         />
   <Button variant="basic" onClick={changeSearchData}>Search</Button>
-  </Container>
-</Container>)
+  </SearchInnerContainer>
+</SearchWrapContainer>)
 }

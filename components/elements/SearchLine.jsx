@@ -27,8 +27,8 @@ export default function SearchLine( props) {
           <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
           <Image
                 priority
-                height={20}
-                width={16}
+                height={24}
+                width={props.id=="locationSearch" ? 17 : 24}
                 src={props.pic}
                 />
         <TextField id={props.id} label={props.label} onChange={handleChangeInput} variant="standard"/>
