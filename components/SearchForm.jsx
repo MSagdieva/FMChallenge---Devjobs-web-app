@@ -61,7 +61,7 @@ export default function SearchForm(props) {
             job.expertice.map(exp=>{addDataObject(setInfo, exp, searchData.expertices, job.id);
               setInfo.add(exp)});
             setInfo.add(job.position).add(job.company).add(job.location).add(job.contract);
-            // console.log(searchData);
+            console.log(searchData);
         }
     });
    return searchData;
@@ -81,27 +81,37 @@ export default function SearchForm(props) {
 
   function changeSearchData(){
     if (!document.getElementById("fulltime").checked&&document.getElementById("locationSearch").value==""&&document.getElementById("basicSearch").value=="")
-    {props.setSearchQuery(defaultArray);
-  }
+    {
+      props.setSearchQuery(defaultArray);
+    }
     else {
     let arToChange = defaultArray;
+    let tryToFindPosition = Object.getOwnPropertyNames(searchData.titles).map(function(element, index){
+      if(element.includes(document.getElementById("basicSearch").value)) return index+1}).filter((elem)=> {return elem != undefined});
+    console.log(tryToFindPosition);
     if (document.getElementById("fulltime").checked)
       {
         arToChange = arToChange.filter((number)=>(searchData.contract["Full Time"]).indexOf(number)!="-1");
       }
     if(document.getElementById("locationSearch").value!=""){
-      if (Object.getOwnPropertyNames(searchData.countries).indexOf(document.getElementById("locationSearch").value)!="-1"){
-        arToChange = arToChange.filter((number)=>(searchData.countries[document.getElementById("locationSearch").value]).indexOf(number)!="-1");
+      if (Object.getOwnPropertyNames(searchData.countries).includes(capitalizeFirstLetter(document.getElementById("locationSearch").value))){
+        arToChange = arToChange.filter((number)=>(searchData.countries[capitalizeFirstLetter(document.getElementById("locationSearch").value)].indexOf(number)!="-1"));
       }
     }
     if(document.getElementById("basicSearch").value!=""){
-      if (Object.getOwnPropertyNames(searchData.companies).indexOf(document.getElementById("basicSearch").value)!="-1"){
-        arToChange = arToChange.filter((number)=>(searchData.companies[document.getElementById("basicSearch").value]).indexOf(number)!="-1");
+      if (Object.getOwnPropertyNames(searchData.companies).includes(document.getElementById("basicSearch").value)){
+        arToChange = arToChange.filter((number)=>(searchData.companies[document.getElementById("basicSearch").value].indexOf(number)!="-1"));
       }
     }
     if(document.getElementById("basicSearch").value!=""){
-      if (Object.getOwnPropertyNames(searchData.titles).indexOf(document.getElementById("basicSearch").value)!="-1"){
-        arToChange = arToChange.filter((number)=>(searchData.titles[document.getElementById("basicSearch").value]).indexOf(number)!="-1");
+      if (tryToFindPosition.length!=0)
+        {
+          arToChange = arToChange.filter((number)=>(tryToFindPosition.indexOf(number)!="-1"));
+        }
+    }
+    if(document.getElementById("basicSearch").value!=""){
+      if (Object.getOwnPropertyNames(searchData.expertices).includes(document.getElementById("basicSearch").value)){
+        arToChange = arToChange.filter((number)=>(searchData.expertices[document.getElementById("basicSearch").value]).indexOf(number)!="-1");
       }
     }
     props.setSearchQuery(arToChange);

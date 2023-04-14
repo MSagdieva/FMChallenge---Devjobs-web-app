@@ -6,15 +6,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Image from 'next/image';
 
 export default function SearchLine( props) {
-  // function handleChange(e){
-  //   if(props.type!="basic")
-  //    { document.getElementById("locationSearch").value = e.target.value;
-
-// } 
-  //    else
-  //    {document.getElementById("basicSearch").value = e.target.value;
-  // };
-  // }
   function handleChangeInput(e){
     if(props.type!="basic")
      { document.getElementById("locationSearch").value = e.target.value;} 

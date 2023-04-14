@@ -101,6 +101,13 @@
     padding-left:20px;
   }
 
+  .MuiInputBase-formControl:before, .MuiInputBase-formControl.MuiInputBase-colorPrimary.Mui-focused:after{
+    border: none;
+  }
+  
+  .MuiInputBase-formControl:hover:not(.Mui-disabled, .Mui-error):before{
+    border: none;
+}
   #locationSearch-label, #basicSearch-label{
     padding-left:20px;
   }
