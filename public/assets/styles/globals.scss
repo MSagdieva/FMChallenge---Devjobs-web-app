@@ -104,6 +104,9 @@
   .MuiInputBase-formControl:before, .MuiInputBase-formControl.MuiInputBase-colorPrimary.Mui-focused:after{
     border: none;
   }
+  .MuiFormControl-root:hover, .MuiInputBase-root:hover, .MuiInputBase-input:hover, .MuiFormLabel-root:hover{
+    cursor: pointer;
+  }
   
   .MuiInputBase-formControl:hover:not(.Mui-disabled, .Mui-error):before{
     border: none;
@@ -111,7 +114,7 @@
   #locationSearch-label, #basicSearch-label{
     padding-left:20px;
   }
-
+  
   .cardLocation{
     color: $primaryColor;
     margin-top: 50px;
@@ -128,4 +131,9 @@
 
   .grey{
     color: #9DAEC2;
+  }
+
+  .position:hover{
+    color: "#6E8098";
+    cursor: pointer;
   }

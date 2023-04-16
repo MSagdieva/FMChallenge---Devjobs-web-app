@@ -58,33 +58,38 @@ const Header = (props) => {
             '& + .MuiSwitch-track': {
               opacity: 1,
               border: 0,
-              backgroundColor: theme.palette.grey[100]
+              backgroundColor: theme.palette.grey[100],
+              '&:hover':{
+                backgroundColor: theme.palette.grey[400],
+              },
             },
             '&.Mui-disabled + .MuiSwitch-track': {
               opacity: 0.5,
             },
             '& .MuiSwitch-thumb': {
-              backgroundColor: "#5964E0"
+              backgroundColor: "#5964E0",
             },
           },
           '&.Mui-focusVisible .MuiSwitch-thumb': {
-            color: '#33cf4d',
+            color: "#5964E0",
             border: '6px solid #fff',
           },
           '&.Mui-disabled .MuiSwitch-thumb': {
-            color:
-              theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
-                : theme.palette.grey[600],
+            color: "#5964E0",
+              // theme.palette.mode === 'light'
+              //   ? theme.palette.grey[100]
+              //   : theme.palette.grey[600],
           },
           '&.Mui-disabled + .MuiSwitch-track': {
             opacity: theme.palette.mode === 'light' ? 0.7 : 0.3,
+
           },
         },
         '& .MuiSwitch-thumb': {
           boxSizing: 'border-box',
           width: 14,
           height: 14,
+          backgroundColor: "#5964E0",
         },
         '& .MuiSwitch-track': {
           borderRadius: 26 / 2,
@@ -93,6 +98,9 @@ const Header = (props) => {
           transition: theme.transitions.create(['background-color'], {
             duration: 500,
           }),
+          '&:hover':{
+              backgroundColor: theme.palette.grey[400],
+            },
         },
       }));
   const handleChange = function(e){

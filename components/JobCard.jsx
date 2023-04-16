@@ -33,7 +33,7 @@ export default function JobCard(info) {
         <CustomizedCardContent>
         <Typography variant="body1" className="grey">
             {info.info.postedAt} <span className="dot">{"\u25CF"}</span> {info.info.contract}
-          </Typography><Typography variant="h8">{info.info.position}</Typography>
+          </Typography><Typography className="position" variant="h8">{info.info.position}</Typography>
         <Typography variant="body1" className="grey">{info.info.company}</Typography>
         <Typography variant="body2" className="cardLocation">{info.info.location}</Typography>
         </CustomizedCardContent>
