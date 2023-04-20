@@ -2,6 +2,7 @@ import React, {useState, useMemo, createContext}  from "react";
 import '../public/assets/styles/globals.scss';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
+import Head from 'next/head';
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {}, themeMode: "" });
 
@@ -44,18 +45,36 @@ export const ColorModeContext = createContext({ toggleColorMode: () => {}, theme
               textTransform: "capitalize",
               width:"147px",
               padding:16,
+              transition: "all .3s",
+              '&:hover':{background:"#939BF4"}
             },
           },
           {
             props: { variant: 'grey'},
             style: {
-              backgroundColor:"#C9C9C9",
-              color: "#5964E0",
+              color: mode === "light"? "#5964E0":"#FFF",
+              boxSizing: "border-box",
+              backgroundColor: "transparent",
               textTransform: "capitalize",
+              fontFamily: "KumbhSans-Bold",
               fontSize: "16px",
               lineHeight: "20px",
               width:"141px",
               padding:16,
+              height:52,
+              "&:before":{
+                content:'""',
+                position:"absolute",
+                width:"100%",
+                height:"100%",
+                opacity: 0.1,
+                backgroundColor:  mode === "light"? "#5964E0":"#FFF",
+                borderRadius:4,
+                transition: "all .3s",
+              },
+              "&:hover":{
+                "&:before":{opacity: 0.35,},
+              },
             },
           },
         ],
@@ -157,7 +176,10 @@ const colorMode = useMemo(
 
     return (<ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
-    <Component {...pageProps} style={{backgroundColor: mode === "light"? "#FFF": "#000"}}/>
+        <Head>
+          <link rel="shortcut icon" href="assets/favicon-32x32.png" />
+        </Head>
+      <Component {...pageProps} style={{backgroundColor: mode === "light"? "#FFF": "#000"}}/>
     </ThemeProvider>
     </ColorModeContext.Provider>)
   }

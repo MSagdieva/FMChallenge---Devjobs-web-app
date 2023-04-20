@@ -61,7 +61,6 @@ export default function SearchForm(props) {
             job.expertice.map(exp=>{addDataObject(setInfo, exp, searchData.expertices, job.id);
               setInfo.add(exp)});
             setInfo.add(job.position).add(job.company).add(job.location).add(job.contract);
-            console.log(searchData);
         }
     });
    return searchData;
@@ -88,7 +87,6 @@ export default function SearchForm(props) {
     let arToChange = defaultArray;
     let tryToFindPosition = Object.getOwnPropertyNames(searchData.titles).map(function(element, index){
       if(element.includes(document.getElementById("basicSearch").value)) return index+1}).filter((elem)=> {return elem != undefined});
-    console.log(tryToFindPosition);
     if (document.getElementById("fulltime").checked)
       {
         arToChange = arToChange.filter((number)=>(searchData.contract["Full Time"]).indexOf(number)!="-1");

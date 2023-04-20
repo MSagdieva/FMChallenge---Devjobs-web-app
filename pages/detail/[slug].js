@@ -49,7 +49,16 @@ export default function Detail({allJobsData}) {
         padding:40px;
         width: calc(100% - 40px);
         border-radius:4px;
-      }}}
+      }
+    },& .paperHeading{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    },& .paperHeading .firstRow{
+      width: 50%;
+    }
+    
+    }
     `;
     const CustomButton= styled(Button)
     `&{margin-right:40px;
@@ -68,8 +77,8 @@ export default function Detail({allJobsData}) {
      justify-content: space-between;
      margin: 20px auto;
      align-items: center;
-     @media (max-width:780px){
-
+     @media (max-width:475px){
+      padding-bottom: 20px;
     }
     @media (max-width:475px){
       flex-direction: column;
@@ -83,9 +92,9 @@ export default function Detail({allJobsData}) {
                 ? "#000"
                 : "#FFF",
               }));
-    return (<div style={{backgroundColor: mode.themeMode === 'light'?"#F4F6F8":"#121721"}}>
+    return (<div className="innerPage" style={{backgroundColor: mode.themeMode === 'light'?"#F4F6F8":"#121721"}}>
         <Header page="inner"/>
-          <div id="pageContainer" >
+          <div id="pageContainer">
               <CustomContainer disableGutters={true} maxWidth="md" style={{backgroundColor: mode.themeMode === 'light'?"#FFF":"#212121"}}>
                       <div className="imageCont" style={{backgroundColor: allJobsData[slug-1].logoBackground, position: "relative",}}>
                       <Image
@@ -105,13 +114,13 @@ export default function Detail({allJobsData}) {
               </CustomContainer>
               <Container maxWidth="md" disableGutters={true} style={{display: "flex", justifyContent: "center", margin:"0 auto"}}>
                   <CustomPaper>
-                      <div className="paperHeading" style={{display:"flex", justifyContent:"space-between", alignItems: "center"}}>
-                      <div style={{width: "50%"}}>
+                      <div className="paperHeading">
+                      <div className="firstRow">
                         <Typography variant="body1" className="grey">{allJobsData[slug-1].postedAt}<span className="dot">{"\u25CF"}</span>{allJobsData[slug-1].contract}</Typography>
                         <Typography variant="h6">{allJobsData[slug-1].position}</Typography>
                         <Typography variant="body1">{allJobsData[slug-1].location}</Typography>
                       </div>
-                      <Link href={allJobsData[slug-1].apply}><Button variant="basic">Apply</Button></Link>
+                      <Link href={allJobsData[slug-1].apply}><Button variant="basic">Apply Now</Button></Link>
                       </div>
                       <Typography variant="body1" style={{paddingTop:20}}>{allJobsData[slug-1].description}</Typography>
                       <div className="requirements">
@@ -140,7 +149,7 @@ export default function Detail({allJobsData}) {
               <div className="footerText">
               <Typography variant="body1">{allJobsData[slug-1].position}</Typography>
               <Typography variant="body1">{allJobsData[slug-1].company}</Typography></div>
-             <Link href={allJobsData[slug-1].apply}><FooterButton variant="basic">Apply</FooterButton></Link>
+             <Link href={allJobsData[slug-1].apply}><FooterButton variant="basic">Apply Now</FooterButton></Link>
              </Footer>
         </div>)
   }
