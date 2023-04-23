@@ -54,10 +54,17 @@ export default function Detail({allJobsData}) {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      @media (max-width:475px){
+       flex-direction: column;
+       justify-content: center;
+       width: 100%;
+      }
     },& .paperHeading .firstRow{
       width: 50%;
-    }
-    
+      @media (max-width:475px){
+        width: 100%;
+       }
+    },
     }
     `;
     const CustomButton= styled(Button)
@@ -118,11 +125,11 @@ export default function Detail({allJobsData}) {
                       <div className="firstRow">
                         <Typography variant="body1" className="grey">{allJobsData[slug-1].postedAt}<span className="dot">{"\u25CF"}</span>{allJobsData[slug-1].contract}</Typography>
                         <Typography variant="h6">{allJobsData[slug-1].position}</Typography>
-                        <Typography variant="body1">{allJobsData[slug-1].location}</Typography>
+                        <p id="location">{allJobsData[slug-1].location}</p>
                       </div>
-                      <Link href={allJobsData[slug-1].apply}><Button variant="basic">Apply Now</Button></Link>
+                      <Link href={allJobsData[slug-1].apply}><Button className="applyButton" variant="basic">Apply Now</Button></Link>
                       </div>
-                      <Typography variant="body1" style={{paddingTop:20}}>{allJobsData[slug-1].description}</Typography>
+                      <Typography variant="body1" style={{paddingTop:30}}>{allJobsData[slug-1].description}</Typography>
                       <div className="requirements">
                       <Typography variant="h6">{"Requirements"}</Typography>
                         <Typography variant="body1">{allJobsData[slug-1].requirements.content}</Typography>

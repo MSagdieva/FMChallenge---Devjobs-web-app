@@ -24,7 +24,6 @@ export const ColorModeContext = createContext({ toggleColorMode: () => {}, theme
           padding: 0},
           h6:{
             fontFamily: "'KumbhSans-Bold', sans-serif",
-            marginTop:20,
           },
           h5:{
             fontFamily: "'KumbhSans-Bold', sans-serif",

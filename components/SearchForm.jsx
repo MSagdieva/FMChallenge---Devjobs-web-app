@@ -41,6 +41,29 @@ export default function SearchForm(props) {
    align-items: center
   }}
   `;
+
+  const CustomButton= styled(Button)
+  `&{
+    @media (max-width:475px){
+      margin-right:0;
+      max-width: 40px;
+      maxheight: 40px;
+    }
+    & span#buttontText:after{
+    content: "Search";
+    display:block;
+    @media (max-width:475px){
+      content:"";
+    }
+  },
+  & .searchIcon{
+    @media (max-width:475px){
+      width: 28px;
+      height: 28px;
+    }
+  }}
+  `;
+
   const data = useContext(DataContext);
   const [searchData, setSearchData] = useState(createDataForSearch());
   const defaultArray = data.map((job)=>{return job.id});
@@ -126,7 +149,7 @@ export default function SearchForm(props) {
           }
           label="Full time only"
         />
-  <Button variant="basic" onClick={changeSearchData}>Search</Button>
+  <CustomButton variant="basic" onClick={changeSearchData}><span id="buttontText"></span><img className="searchIcon" src="/assets/desktop/icon-search-white.svg"/></CustomButton>
   </SearchInnerContainer>
 </SearchWrapContainer>)
 }
