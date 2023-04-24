@@ -156,4 +156,38 @@
        margin-top: 0;
       }
     }
+
+
+  }
+    #mobileModal.mobileModal{
+      display: flex;
+      align-items: center;
+      @media (max-width: 475px) {
+        display:none;
+       }
+
+    }
+
+     #mobileModal.mobileModal.active{
+      @media (max-width: 475px) {
+        position:fixed;
+        background-color: rgba(0,0,0,.5);
+        z-index: 999;
+        display:flex;
+        justify-content: center;
+        top:0;
+        left:0;
+        height:100vh;
+        width: 100%;
+      & .mobileContent{
+        display: block;
+        padding: 10px;
+        & .MuiFormControl-root{
+          width: 100%;
+        }
+      }
+      }
+       }
+  .filterIcon{
+    height: 24px;
   }

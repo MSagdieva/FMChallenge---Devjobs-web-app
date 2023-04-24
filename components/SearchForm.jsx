@@ -4,6 +4,7 @@ import { Checkbox, FormControlLabel, Button, Container } from "@mui/material";
 import {DataContext} from "../pages/index";
 import { styled } from '@mui/material/styles';
 import {ColorModeContext} from "../pages/_app";
+import Image from 'next/image';
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -11,6 +12,7 @@ function capitalizeFirstLetter(string) {
 
 export default function SearchForm(props) {
   const ColMode = useContext(ColorModeContext);
+  const [openModal, setOpenModal] = useState(false);
   const SearchWrapContainer = styled(Container)
   `&{display: flex;
    justify-content: center;
@@ -24,7 +26,7 @@ export default function SearchForm(props) {
   const SearchInnerContainer = styled(Container)
   `&{display: flex;
    justify-content: space-between;
-   alignItems: center;
+   align-items: center;
    background-color: ${ColMode.themeMode == "light"? "#FFF": "#212121"};
    color: ${ColMode.themeMode == "light"? "#000": "#FFF"};
    position:relative;
@@ -33,12 +35,11 @@ export default function SearchForm(props) {
    margin: 0 auto;
    padding: 20px;
    @media (max-width:780px){
-
   }
   @media (max-width:475px){
-   flex-direction: column;
-   justify-content: center;
-   align-items: center
+    & .mobileContent{
+      background-color: ${ColMode.themeMode == "light"? "#FFF": "#212121"};
+    }
   }}
   `;
 
@@ -57,11 +58,23 @@ export default function SearchForm(props) {
     }
   },
   & .searchIcon{
+    display:none;
     @media (max-width:475px){
+      display: inline-block;
       width: 28px;
       height: 28px;
     }
   }}
+  `;
+
+  const ModalButton= styled(Button)
+  `&{
+    display:none;
+    @media (max-width:475px){
+      width: 100%;
+      display: block;
+    }
+  }
   `;
 
   const data = useContext(DataContext);
@@ -71,6 +84,7 @@ export default function SearchForm(props) {
   useEffect (()=>
   { 
   },[])
+  
 
   function createDataForSearch(){
     let searchData = {"countries":{},"titles":{},"companies":{}, "expertices":{}, "contract":{}};
@@ -137,17 +151,35 @@ export default function SearchForm(props) {
     }
     props.setSearchQuery(arToChange);
     }
+    setOpenModal(false);
   }
+
+  function handleModalChange(e){
+    setOpenModal(!openModal);
+  }
+
+  function handleModalChangeOut(e){
+    if (e.target.className == "mobileModal active")
+    {setOpenModal(false);}
+  }  
   return(
 <SearchWrapContainer maxWidth="false">
   <SearchInnerContainer maxWidth="md">
   <SearchLine id="basicSearch" type="basic" label="Filter by title, companies, expertise..." pic="/assets/desktop/icon-search.svg" searchData={searchData} data={data} setSearchQuery={props.searchQuery}/>
+  <div id="mobileModal" onClick={handleModalChangeOut} className={"mobileModal "+(openModal? "active":"")}>
+    <div className="mobileContent">
   <SearchLine id="locationSearch" type= "location" label="Filter by location..." pic="/assets/desktop/icon-location.svg" searchData={searchData} data={data} setSearchQuery={props.searchQuery}/>
   <FormControlLabel
           control={
             <Checkbox name="fulltime" id="fulltime"/>
           }
           label="Full time only"
+        />
+  <ModalButton variant="basic" onClick={changeSearchData}>Search</ModalButton>
+  </div>
+  </div>
+  <img className="filterIcon" src="/assets/mobile/icon-filter.svg"
+        onClick={handleModalChange}
         />
   <CustomButton variant="basic" onClick={changeSearchData}><span id="buttontText"></span><img className="searchIcon" src="/assets/desktop/icon-search-white.svg"/></CustomButton>
   </SearchInnerContainer>
