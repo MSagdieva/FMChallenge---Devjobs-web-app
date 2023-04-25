@@ -190,4 +190,8 @@
        }
   .filterIcon{
     height: 24px;
+    display:none;
+    @media (max-width: 475px) {
+      display:block;
+    }
   }
