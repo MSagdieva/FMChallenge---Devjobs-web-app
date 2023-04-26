@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {ColorModeContext} from "../../pages/_app";
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 const Header = (props) => {
   const colorMode = useContext(ColorModeContext);
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(colorMode.themeMode == "light"?false: true);
   const CustomImage = styled(Image)
     `&:hover{
       cursor: pointer;
@@ -122,6 +122,7 @@ const Header = (props) => {
        setChecked(true);
     }
   }
+
 
       return (
       <CustomizedHeader maxWidth="false">

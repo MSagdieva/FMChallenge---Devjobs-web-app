@@ -31,18 +31,22 @@ Users of an application is able to:
 
 ![FMChallenge-devjobs-web-app]()
 ![FMChallenge-devjobs-web-app]()
+![FMChallenge-devjobs-web-app]()
+![FMChallenge-devjobs-web-app]()
+![FMChallenge-devjobs-web-app]()
 
 ### Links
 
 - Solution URL: [GitHub Page](https://github.com/MSagdieva/FMChallenge---Devjobs-web-app.git)
-- Live Site URL: [Live site URL]()
+- Live Site URL: [Live site URL](https://fm-challenge-devjobs-web-app.vercel.app/)
 
 ## My process
 
 ### Built with
 
+- [Next](https://nextjs.org/) - React-based JS Framework
 - [React](https://reactjs.org/) - JS library
-- [React-Bootstrap](https://react-bootstrap.github.io/) - For styles
+- [Material-UI]() - For styles and styled components
 
 ### What I learned
 Basics skills:
@@ -54,33 +58,7 @@ Basics skills:
 Besides the challenge demans Application has an additional features: waiting page for process of data receiving process, error page for cases of WebExceptions as a result of data fetcing.
 
 ```js
-// change Component layout in case of loading or error state
-            {loading && <div className={(theme==="dark"? darkStyles.info_container: lightStyles.info_container)} style={
-                    { width: "100%",
-                    height: "90vh",
-                    backgroundColor: "#FAFAFA",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center"}
-                }><h3 style={
-                    {color: "red",
-                    fontSize: "28px"}}>A moment please...</h3></div>}
-            {error && (
-                <div className={(theme==="dark"? darkStyles.info_container: lightStyles.info_container)} style={
-                    {width: "100%",
-                    height: "90vh",
-                    backgroundColor: "#FAFAFA",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center"}
-                }>
-                    <h3 style={
-                    {color: "red",
-                    fontSize: "28px"}
-                }>{`There is a problem fetching the post data - ${error}`}
-                    </h3>
-                    </div>
-                )}
+
 ```
 
 
