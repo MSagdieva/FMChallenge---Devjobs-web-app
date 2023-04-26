@@ -29,11 +29,11 @@ Users of an application is able to:
 
 ### Screenshot
 
-![FMChallenge-devjobs-web-app]()
-![FMChallenge-devjobs-web-app]()
-![FMChallenge-devjobs-web-app]()
-![FMChallenge-devjobs-web-app]()
-![FMChallenge-devjobs-web-app]()
+![FMChallenge-devjobs-web-app](https://github.com/MSagdieva/FMChallenge---Devjobs-web-app/blob/main/screenshot_devjobsWebApp.PNG)
+![FMChallenge-devjobs-web-app](https://github.com/MSagdieva/FMChallenge---Devjobs-web-app/blob/main/screenshot_devjobsWebApp2.PNG)
+![FMChallenge-devjobs-web-app](https://github.com/MSagdieva/FMChallenge---Devjobs-web-app/blob/main/screenshot_devjobsWebApp3.PNG)
+![FMChallenge-devjobs-web-app](https://github.com/MSagdieva/FMChallenge---Devjobs-web-app/blob/main/screenshot_devjobsWebApp4.PNG)
+![FMChallenge-devjobs-web-app](https://github.com/MSagdieva/FMChallenge---Devjobs-web-app/blob/main/screenshot_devjobsWebApp5.PNG)
 
 ### Links
 
@@ -46,30 +46,20 @@ Users of an application is able to:
 
 - [Next](https://nextjs.org/) - React-based JS Framework
 - [React](https://reactjs.org/) - JS library
-- [Material-UI]() - For styles and styled components
+- [Material-UI](https://mui.com/) - For styles and styled components
 
 ### What I learned
 Basics skills:
 - JS RestAPI fetching with error handling
-- React Bootstrap layout
+- Material UI Components
 - React componenst layout and states
 - Theme change states
-
-Besides the challenge demans Application has an additional features: waiting page for process of data receiving process, error page for cases of WebExceptions as a result of data fetcing.
-
-```js
-
-```
-
-
-```js
-
-```
 
 ### Useful resources
 
 - [ReactDocs](https://reactjs.org/docs/) - ReactDocs documentations is simple, full and very useful for development.
-- [Async functions in UseEffect](https://devtrium.com/posts/async-functions-useeffect) - This is an useful article which helped me finally understand data fetching. I'd recommend it to anyone still learning this concept.
+- [NextjsDocs](https://nextjs.org/docs) - NextjsDocs documentations is very useful for development.
+- [getStaticPaths](https://www.geeksforgeeks.org/how-to-use-getstaticpaths-in-next-js/) - This is an useful article which helped me solve the problem with get data.json file from inner page of the applicaton. I'd recommend it to anyone still learning this concept.
 
 
 ## Author
