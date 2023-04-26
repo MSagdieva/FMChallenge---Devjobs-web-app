@@ -35,6 +35,9 @@
     max-width: 1200px;
     width: 100%;
     padding: 0 40px;
+    @media (max-width: 475px) {
+      align-items: flex-start;
+    }
   }
 
   .jobs-list-container .jobs-container .card{
@@ -99,6 +102,7 @@
   }
   #locationSearch, #basicSearch{
     padding-left:20px;
+    top: -10px;
   }
 
   .MuiInputBase-formControl:before, .MuiInputBase-formControl.MuiInputBase-colorPrimary.Mui-focused:after{
@@ -113,6 +117,20 @@
 }
   #locationSearch-label, #basicSearch-label{
     padding-left:20px;
+    top:-5px;
+  }
+  #locationSearch-label{
+    @media (max-width: 475px) {
+      position: static;
+    }
+  }
+  #basicSearch-label{
+    @media (max-width: 678px) {
+      top: -15px;
+    }
+    @media (max-width: 475px) {
+      top: -5px;
+    }
   }
   
   .cardLocation{
@@ -167,7 +185,30 @@
        }
 
     }
+    .mobileContent{
+      display: flex;
+      & .MuiFormControl-root{
+        & .MuiBox-root{
+          & span {
+            top: -10px;
+          }
+        }
+      }
+    }
 
+    .MuiFormControl-root {
+        & .MuiBox-root{
+          & span {
+            top: -10px;
+            @media (max-width: 678px) {
+              top: -20px;
+            }
+            @media (max-width: 678px) {
+              display: none!important;
+            }
+          }
+        }
+    }
      #mobileModal.mobileModal.active{
       @media (max-width: 475px) {
         position:fixed;
@@ -187,9 +228,15 @@
         & .MuiFormControl-root{
           width: 100%;
           height: 75px;
+          display:flex;
+          justify-content: center;
           border-bottom: 1px solid rgb(110, 128, 152, .2);
           & .MuiBox-root{
             align-items: center;
+            & span{
+
+            }
+          
           }
         }
         & .MuiFormControlLabel-labelPlacementEnd{
